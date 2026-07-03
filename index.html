@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MarkNote — Capture the web as markdown</title>
+  <meta name="description" content="Select any text, press a shortcut, and MarkNote saves it as markdown — tagged by site, stamped with time, stored entirely on your machine. No accounts, no servers." />
+  <meta property="og:title" content="MarkNote — Capture the web as markdown" />
+  <meta property="og:description" content="A local-first Chrome extension that turns any selection into a timestamped, taggable markdown note in one keystroke." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#141413" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="style.css" />
+  
+  <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
+</head>
+<body>
+
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-dot"></div>
+    MarkNote
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#shortcuts">Shortcuts</a></li>
+    <li><a href="#install">Install</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <a class="nav-cta" href="#install">Get MarkNote</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Open menu">
+      <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</nav>
+
+<ul class="nav-drawer" id="navDrawer">
+  <li><a href="#features">Features</a></li>
+  <li><a href="#how">How it works</a></li>
+  <li><a href="#shortcuts">Shortcuts</a></li>
+  <li><a href="#install">Install</a></li>
+</ul>
+
+<section id="main" tabindex="-1" style="max-width:1200px;margin:0 auto;outline:none;">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-dot"></div>
+        Chrome Extension · Free · Local-first
+      </div>
+
+      <h1 class="hero-headline">
+        Capture the web.<br>
+        <span class="hl-wrap">
+          <span class="hl">Stay in context.</span>
+          <svg class="hl-stroke" aria-hidden="true" focusable="false" viewBox="0 0 320 18" preserveAspectRatio="none">
+            <path d="M3 11c40-6 220-8 314-4" stroke="var(--accent)" stroke-width="7" stroke-linecap="round" fill="none"/>
+          </svg>
+        </span><span class="cursor"></span>
+      </h1>
+
+      <p class="hero-sub">
+        Select any text, press a shortcut, and MarkNote saves it as markdown —
+        tagged by site, stamped with time, stored entirely on your machine.
+        No accounts. No servers. No noise.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn-primary" href="#install">
+          <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Install for Chrome
+        </a>
+      </div>
+
+      <p class="hero-note">
+        <svg aria-hidden="true" focusable="false" width="12" height="12" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M8 5v4M8 11v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        All notes stored locally via <code style="font-family:'DM Mono',monospace;font-size:11px;background:var(--bg3);padding:1px 5px;border-radius:3px;">chrome.storage.local</code>
+      </p>
+    </div>
+
+    <div class="hero-right">
+      <div class="popup-mockup" id="popupMockup" role="img" aria-label="MarkNote popup showing pinned notes and recent captures grouped by site, with keyboard shortcuts for capture, append, and open">
+
+        <div class="pm-toolbar">
+          <div class="pm-logo">
+            <div class="pm-dot"></div>
+            <span class="pm-name">MarkNote</span>
+          </div>
+          <div class="pm-right">
+            <span class="pm-count">13 notes</span>
+            <div class="pm-icons">
+              <div class="pm-icon">
+                <svg aria-hidden="true" focusable="false" width="11" height="11" viewBox="0 0 16 16" fill="none">
+                  <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="pm-icon">
+                <svg aria-hidden="true" focusable="false" width="11" height="11" viewBox="0 0 16 16" fill="none">
+                  <path d="M8 2v8M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pm-search">
+          <svg aria-hidden="true" focusable="false" width="11" height="11" viewBox="0 0 16 16" fill="none">
+            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M11 11l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Search notes…
+        </div>
+
+        <div class="pm-pinned">
+          <svg aria-hidden="true" focusable="false" width="10" height="10" viewBox="0 0 16 16" fill="none">
+            <path d="M9.5 1.5l5 5-7 2-3 3-1.5-1.5 3-3 2-7z" stroke="#1D9E75" stroke-width="1.4" stroke-linejoin="round"/>
+          </svg>
+          Pinned
+          <span class="pm-pinned-badge">2</span>
+          <span class="pm-pinned-chevron">›</span>
+        </div>
+
+        <div class="pm-section">This site — claude.ai</div>
+
+        <div class="pm-card">
+          <div class="pm-card-meta">
+            <img class="pm-card-icon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=16" alt="" loading="lazy" decoding="async" />
+            <span class="pm-card-title">MarkNote Chrome extension — debug</span>
+            <span class="pm-card-time">2d ago</span>
+          </div>
+          <div class="pm-card-snippet">Ship next (already half-built, low effort)</div>
+          <div class="pm-tags">
+            <span class="pm-tag">claude</span>
+            <span class="pm-tag">ai</span>
+            <span class="pm-tag">artificialintelligence</span>
+          </div>
+        </div>
+
+        <div class="pm-card">
+          <div class="pm-card-meta">
+            <img class="pm-card-icon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=16" alt="" loading="lazy" decoding="async" />
+            <span class="pm-card-title">Layer 1 — Inline hashtag extraction</span>
+            <span class="pm-card-time">3d ago</span>
+          </div>
+          <div class="pm-card-snippet">· [00:49] Layer 1 — Inline hashtag extraction</div>
+          <div class="pm-tags">
+            <span class="pm-tag">claude</span>
+            <span class="pm-tag">time</span>
+            <span class="pm-tag agg">aggregate</span>
+          </div>
+        </div>
+
+        <div class="pm-section">Other sites</div>
+
+        <div class="pm-card">
+          <div class="pm-card-meta">
+            <img class="pm-card-icon" src="https://www.google.com/s2/favicons?domain=janestreet.com&sz=16" alt="" loading="lazy" decoding="async" />
+            <span class="pm-card-title">Who We Are :: Jane Street</span>
+            <span class="pm-card-time">10 Jun</span>
+          </div>
+          <div class="pm-card-snippet">Markets are defined by uncertainty.</div>
+          <div class="pm-tags">
+            <span class="pm-tag">janestreet</span>
+          </div>
+        </div>
+
+        <div class="pm-bar">
+          <span><kbd>Alt+Shift+S</kbd> capture</span>
+          <span><kbd>Alt+Shift+F</kbd> append</span>
+          <span><kbd>Alt+Shift+M</kbd> open</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="privacy">
+  <div class="privacy-inner">
+    <div class="privacy-item reveal">
+      <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 16 16" fill="none">
+        <path d="M8 1L2 4v4c0 3.31 2.56 6 6 7 3.44-1 6-3.69 6-7V4L8 1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      </svg>
+      100% local — nothing leaves your browser
+    </div>
+    <div class="privacy-item reveal">
+      <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 16 16" fill="none">
+        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      No account, no tracking, no ads
+    </div>
+    <div class="privacy-item reveal">
+      <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 16 16" fill="none">
+        <path d="M4 2h8l2 2v10H2V4l2-2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        <path d="M5 9h6M5 12h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      Export as .md or .json anytime
+    </div>
+    <div class="privacy-item reveal">
+      <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 16 16" fill="none">
+        <path d="M2 4h12v9H2zM5 4V2h6v2" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+      </svg>
+      Open source, MIT licensed
+    </div>
+  </div>
+</div>
+
+<section class="section" id="features">
+  <div class="section-label">Features</div>
+  <h2 class="section-title">Built for how researchers actually work</h2>
+  <p class="section-sub">Not a bookmark manager. Not a read-later app. A fast capture layer that lives between the page and your thinking.</p>
+
+  <div class="feature-grid">
+
+    <div class="feature-card reveal">
+      <div class="feature-icon">
+        <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M2 4h12M2 8h8M2 12h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="13" cy="12" r="2.5" stroke="currentColor" stroke-width="1.3"/>
+        </svg>
+      </div>
+      <div class="feature-title">Instant capture</div>
+      <div class="feature-desc">Select text, press <code style="font-family:'DM Mono',monospace;font-size:11px;background:var(--bg4);padding:1px 4px;border-radius:3px;">Alt+Shift+S</code>. Title, URL, favicon, and timestamp are auto-filled. No forms, no friction.</div>
+      <div class="feature-tag">background.js → chrome.storage.local</div>
+    </div>
+
+    <div class="feature-card reveal">
+      <div class="feature-icon">
+        <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M10 10l3 2-3 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="feature-title">Append mode</div>
+      <div class="feature-desc">
+        <code style="font-family:'DM Mono',monospace;font-size:11px;background:var(--bg4);padding:1px 4px;border-radius:3px;">Alt+Shift+F</code> appends a timestamped bullet <code style="font-family:'DM Mono',monospace;font-size:10px;background:var(--bg4);padding:1px 3px;border-radius:3px;">· [14:20] text</code> to today's note for that site. One rolling log per domain per day.
+      </div>
+      <div class="feature-tag">aggregate notes · no duplicates</div>
+    </div>
+
+    <div class="feature-card reveal">
+      <div class="feature-icon">
+        <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M3 3l3 3-3 3M8 9h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="feature-title">Inline hashtags</div>
+      <div class="feature-desc">Write <code style="font-family:'DM Mono',monospace;font-size:11px;background:var(--bg4);padding:1px 4px;border-radius:3px;">#trading</code> anywhere in a note — it's automatically extracted as a tag and indexed for filtering. Hashtags stay in your text.</div>
+      <div class="feature-tag">auto-extracted · non-destructive</div>
+    </div>
+
+    <div class="feature-card reveal">
+      <div class="feature-icon">
+        <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="9" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="2" y="9" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="9" y="9" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.4"/>
+        </svg>
+      </div>
+      <div class="feature-title">Browse by site or tag</div>
+      <div class="feature-desc">Sidebar shows every domain and tag you've ever captured from, sorted by count. Tap any to filter the list. Tap a section header to scope to that site instantly.</div>
+      <div class="feature-tag">sidebar · filter bar · one-click clear</div>
+    </div>
+
+    <div class="feature-card reveal">
+      <div class="feature-icon">
+        <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M9.5 1.5l5 5-7 2-3 3-1.5-1.5 3-3 2-7z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="M5.5 10.5L2 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="feature-title">Pinned notes</div>
+      <div class="feature-desc">Pin any note from the detail view. Pinned notes surface in a collapsible panel below search for quick access while staying visible in the main list with a pin indicator.</div>
+      <div class="feature-tag">quick access · never hidden</div>
+    </div>
+
+    <div class="feature-card reveal">
+      <div class="feature-icon">
+        <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="feature-title">Export & import</div>
+      <div class="feature-desc">Export all notes or a selection as <code style="font-family:'DM Mono',monospace;font-size:11px;background:var(--bg4);padding:1px 4px;border-radius:3px;">.md</code> or <code style="font-family:'DM Mono',monospace;font-size:11px;background:var(--bg4);padding:1px 4px;border-radius:3px;">.json</code>. Import back with deduplication by ID and title+URL fingerprint — reimporting is always safe.</div>
+      <div class="feature-tag">portable · fingerprint deduplication</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="how" id="how" style="padding-top:96px;">
+  <div class="section-label">How it works</div>
+  <h2 class="section-title" style="margin-bottom:16px;">Three keystrokes cover 90% of your workflow</h2>
+  <p class="section-sub">MarkNote is designed around muscle memory. You don't think about it — you just capture, and it's there.</p>
+
+  <div class="steps reveal">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Select and capture</div>
+      <div class="step-desc">Highlight any text on any page. Press <strong>Alt+Shift+S</strong>. A green toast confirms the save. The selection is highlighted on the page. Done.</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">02</div>
+      <div class="step-title">Append as you go</div>
+      <div class="step-desc">Keep reading. When you hit something worth adding to the same note, press <strong>Alt+Shift+F</strong>. It appends a timestamped bullet to today's log for that site — no new note created.</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">03</div>
+      <div class="step-title">Surface and review</div>
+      <div class="step-desc">Open the popup with <strong>Alt+Shift+M</strong>. Your notes are grouped by site, filtered by tag, searchable, sortable, and exportable — all without leaving the browser.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="shortcuts-section" id="shortcuts" style="padding-top:96px;">
+  <div class="section-label">Shortcuts</div>
+  <h2 class="section-title" style="margin-bottom:48px;">Every action has a key</h2>
+
+  <div class="shortcuts-grid">
+    <div class="shortcut-card reveal">
+      <div class="shortcut-keys">
+        <span class="key">Alt</span><span class="key-plus">+</span>
+        <span class="key">Shift</span><span class="key-plus">+</span>
+        <span class="key">S</span>
+      </div>
+      <div class="shortcut-info">
+        <div class="shortcut-title">Capture or new note</div>
+        <div class="shortcut-desc">Selection → saves immediately. Nothing selected → opens blank editor pre-filled with page title.</div>
+      </div>
+    </div>
+
+    <div class="shortcut-card reveal">
+      <div class="shortcut-keys">
+        <span class="key">Alt</span><span class="key-plus">+</span>
+        <span class="key">Shift</span><span class="key-plus">+</span>
+        <span class="key">F</span>
+      </div>
+      <div class="shortcut-info">
+        <div class="shortcut-title">Append to today's note</div>
+        <div class="shortcut-desc">Adds a timestamped bullet to the current site's daily log. Creates one if it doesn't exist yet.</div>
+      </div>
+    </div>
+
+    <div class="shortcut-card reveal">
+      <div class="shortcut-keys">
+        <span class="key">Alt</span><span class="key-plus">+</span>
+        <span class="key">Shift</span><span class="key-plus">+</span>
+        <span class="key">M</span>
+      </div>
+      <div class="shortcut-info">
+        <div class="shortcut-title">Open popup</div>
+        <div class="shortcut-desc">Opens MarkNote from anywhere, any page, without clicking the toolbar icon.</div>
+      </div>
+    </div>
+
+    <div class="shortcut-card reveal">
+      <div class="shortcut-keys">
+        <span class="key">Ctrl</span><span class="key-plus">+</span>
+        <span class="key">↵</span>
+      </div>
+      <div class="shortcut-info">
+        <div class="shortcut-title">Save note</div>
+        <div class="shortcut-desc">Save from any field in the editor — title, content, or tag input.</div>
+      </div>
+    </div>
+
+    <div class="shortcut-card reveal">
+      <div class="shortcut-keys">
+        <span class="key">Esc</span>
+      </div>
+      <div class="shortcut-info">
+        <div class="shortcut-title">Save and go back</div>
+        <div class="shortcut-desc">Saves the current editor state and navigates back. Clicking away also auto-saves.</div>
+      </div>
+    </div>
+
+    <div class="shortcut-card reveal">
+      <div class="shortcut-keys">
+        <span class="key">↑</span><span class="key-plus"> </span>
+        <span class="key">↓</span>
+      </div>
+      <div class="shortcut-info">
+        <div class="shortcut-title">Navigate notes</div>
+        <div class="shortcut-desc">Move between cards in the list. <span style="font-family:'DM Mono',monospace;font-size:10px;">Enter</span> to open, <span style="font-family:'DM Mono',monospace;font-size:10px;">Backspace</span> to go back.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="cta-section" id="install">
+  <div class="hero-eyebrow">
+    <div class="hero-eyebrow-dot"></div>
+    Takes about 60 seconds
+  </div>
+
+  <h2>Start capturing.<span class="cursor"></span></h2>
+  <p>Load it as an unpacked extension. No Chrome Web Store required. Works on Chrome, Brave, and any Chromium browser.</p>
+
+  <div class="install-steps">
+    <div class="install-step"><span class="install-n">1</span><span>Download and unzip the <code>marknote</code> folder</span></div>
+    <div class="install-step"><span class="install-n">2</span><span>Open <code>chrome://extensions</code> and enable Developer mode</span></div>
+    <div class="install-step"><span class="install-n">3</span><span>Click <strong>Load unpacked</strong> → select the folder</span></div>
+    <div class="install-step"><span class="install-n">4</span><span>Pin the icon, then press <code>Alt+Shift+S</code> on any page</span></div>
+  </div>
+
+  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+    <a class="btn-primary" href="#">
+      <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 16 16" fill="none">
+        <path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Download MarkNote
+    </a>
+  </div>
+</section>
+
+<div style="border-top:0.5px solid var(--border)">
+  <footer>
+    <div class="footer-logo">
+      <div class="nav-dot" style="width:7px;height:7px;"></div>
+      MarkNote
+    </div>
+    <div class="footer-note">Local-first. No servers. No tracking.</div>
+    <div class="footer-links">
+      <a href="#">GitHub</a>
+      <a href="#">README</a>
+      <a href="#">Shortcuts</a>
+    </div>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
