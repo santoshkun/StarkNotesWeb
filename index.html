@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MarkNote — Capture the web as markdown</title>
-  <meta name="description" content="Select any text, press a shortcut, and MarkNote saves it as markdown — tagged by site, stamped with time, stored entirely on your machine. No accounts, no servers." />
-  <meta property="og:title" content="MarkNote — Capture the web as markdown" />
+  <title>StarkNotes — Capture the web as markdown</title>
+  <meta name="description" content="Select any text, press a shortcut, and StarkNotes saves it as markdown — tagged by site, stamped with time, stored entirely on your machine. No accounts, no servers." />
+  <meta property="og:title" content="StarkNotes — Capture the web as markdown" />
   <meta property="og:description" content="A local-first Chrome extension that turns any selection into a timestamped, taggable markdown note in one keystroke." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#141413" />
@@ -26,7 +26,7 @@
 <nav>
   <a class="nav-logo" href="#">
     <div class="nav-dot"></div>
-    MarkNote
+    StarkNotes
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#features">Features</a></li>
@@ -35,7 +35,7 @@
     <li><a href="#install">Install</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:8px;">
-    <a class="nav-cta" href="#install">Get MarkNote</a>
+    <a class="nav-cta" href="#install">Get StarkNotes</a>
     <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Open menu">
       <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     </button>
@@ -68,7 +68,7 @@
       </h1>
 
       <p class="hero-sub">
-        Select any text, press a shortcut, and MarkNote saves it as markdown —
+        Select any text, press a shortcut, and StarkNotes saves it as markdown —
         tagged by site, stamped with time, stored entirely on your machine.
         No accounts. No servers. No noise.
       </p>
@@ -92,12 +92,12 @@
     </div>
 
     <div class="hero-right">
-      <div class="popup-mockup" id="popupMockup" role="img" aria-label="MarkNote popup showing pinned notes and recent captures grouped by site, with keyboard shortcuts for capture, append, and open">
+      <div class="popup-mockup" id="popupMockup" role="img" aria-label="StarkNotes popup showing pinned notes and recent captures grouped by site, with keyboard shortcuts for capture, append, and open">
 
         <div class="pm-toolbar">
           <div class="pm-logo">
             <div class="pm-dot"></div>
-            <span class="pm-name">MarkNote</span>
+            <span class="pm-name">StarkNotes</span>
           </div>
           <div class="pm-right">
             <span class="pm-count">13 notes</span>
@@ -133,32 +133,32 @@
           <span class="pm-pinned-chevron">›</span>
         </div>
 
-        <div class="pm-section">This site — claude.ai</div>
+        <div class="pm-section">This site — en.wikipedia.org</div>
 
         <div class="pm-card">
           <div class="pm-card-meta">
-            <img class="pm-card-icon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=16" alt="" loading="lazy" decoding="async" />
-            <span class="pm-card-title">MarkNote Chrome extension — debug</span>
+            <img class="pm-card-icon" src="assets/icons/wiki-icon.svg" alt="" loading="lazy" decoding="async" />
+            <span class="pm-card-title">Byzantine Generals Problem</span>
             <span class="pm-card-time">2d ago</span>
           </div>
-          <div class="pm-card-snippet">Ship next (already half-built, low effort)</div>
+          <div class="pm-card-snippet">Reread before writing the consensus section</div>
           <div class="pm-tags">
-            <span class="pm-tag">claude</span>
-            <span class="pm-tag">ai</span>
-            <span class="pm-tag">artificialintelligence</span>
+            <span class="pm-tag">distsys</span>
+            <span class="pm-tag">research</span>
+            <span class="pm-tag">thesis</span>
           </div>
         </div>
 
         <div class="pm-card">
           <div class="pm-card-meta">
-            <img class="pm-card-icon" src="https://www.google.com/s2/favicons?domain=claude.ai&sz=16" alt="" loading="lazy" decoding="async" />
-            <span class="pm-card-title">Layer 1 — Inline hashtag extraction</span>
+            <img class="pm-card-icon" src="assets/icons/wiki-icon.svg" alt="" loading="lazy" decoding="async" />
+            <span class="pm-card-title">Ada Lovelace</span>
             <span class="pm-card-time">3d ago</span>
           </div>
-          <div class="pm-card-snippet">· [00:49] Layer 1 — Inline hashtag extraction</div>
+          <div class="pm-card-snippet">· [00:49] first published algorithm, 1843</div>
           <div class="pm-tags">
-            <span class="pm-tag">claude</span>
-            <span class="pm-tag">time</span>
+            <span class="pm-tag">history</span>
+            <span class="pm-tag">cs</span>
             <span class="pm-tag agg">aggregate</span>
           </div>
         </div>
@@ -167,13 +167,14 @@
 
         <div class="pm-card">
           <div class="pm-card-meta">
-            <img class="pm-card-icon" src="https://www.google.com/s2/favicons?domain=janestreet.com&sz=16" alt="" loading="lazy" decoding="async" />
-            <span class="pm-card-title">Who We Are :: Jane Street</span>
+            <img class="pm-card-icon" src="assets/icons/stripe-icon.svg" alt="" loading="lazy" decoding="async" />
+            <span class="pm-card-title">Stripe Docs :: Idempotency keys</span>
             <span class="pm-card-time">10 Jun</span>
           </div>
-          <div class="pm-card-snippet">Markets are defined by uncertainty.</div>
+          <div class="pm-card-snippet">Use for the retry logic on checkout.</div>
           <div class="pm-tags">
-            <span class="pm-tag">janestreet</span>
+            <span class="pm-tag">stripe</span>
+            <span class="pm-tag">api</span>
           </div>
         </div>
 
@@ -307,7 +308,7 @@
 <section class="how" id="how" style="padding-top:96px;">
   <div class="section-label">How it works</div>
   <h2 class="section-title" style="margin-bottom:16px;">Three keystrokes cover 90% of your workflow</h2>
-  <p class="section-sub">MarkNote is designed around muscle memory. You don't think about it — you just capture, and it's there.</p>
+  <p class="section-sub">StarkNotes is designed around muscle memory. You don't think about it — you just capture, and it's there.</p>
 
   <div class="steps reveal">
     <div class="step reveal">
@@ -367,7 +368,7 @@
       </div>
       <div class="shortcut-info">
         <div class="shortcut-title">Open popup</div>
-        <div class="shortcut-desc">Opens MarkNote from anywhere, any page, without clicking the toolbar icon.</div>
+        <div class="shortcut-desc">Opens StarkNotes from anywhere, any page, without clicking the toolbar icon.</div>
       </div>
     </div>
 
@@ -417,7 +418,7 @@
   <p>Load it as an unpacked extension. No Chrome Web Store required. Works on Chrome, Brave, and any Chromium browser.</p>
 
   <div class="install-steps">
-    <div class="install-step"><span class="install-n">1</span><span>Download and unzip the <code>marknote</code> folder</span></div>
+    <div class="install-step"><span class="install-n">1</span><span>Download and unzip the <code>starknotes</code> folder</span></div>
     <div class="install-step"><span class="install-n">2</span><span>Open <code>chrome://extensions</code> and enable Developer mode</span></div>
     <div class="install-step"><span class="install-n">3</span><span>Click <strong>Load unpacked</strong> → select the folder</span></div>
     <div class="install-step"><span class="install-n">4</span><span>Pin the icon, then press <code>Alt+Shift+S</code> on any page</span></div>
@@ -428,7 +429,7 @@
       <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 16 16" fill="none">
         <path d="M8 1v9M4 7l4 4 4-4M2 13h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
-      Download MarkNote
+      Download StarkNotes
     </a>
   </div>
 </section>
@@ -437,7 +438,7 @@
   <footer>
     <div class="footer-logo">
       <div class="nav-dot" style="width:7px;height:7px;"></div>
-      MarkNote
+      StarkNotes
     </div>
     <div class="footer-note">Local-first. No servers. No tracking.</div>
     <div class="footer-links">
