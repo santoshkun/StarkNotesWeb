@@ -45,6 +45,18 @@ body {
   transition: opacity 0.3s ease;
 }
 
+/* Touch devices never fire mousemove, so give them a fixed, pleasant glow position
+   instead of the off-screen fallback (var(--mouse-y, -50%)) */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-glow {
+    background: radial-gradient(
+      700px circle at 50% 15%,
+      rgba(29, 158, 117, 0.045),
+      transparent 60%
+    );
+  }
+}
+
 /* Faint paper grain — sits just above the ambient glow but below content */
 body::before {
   content: '';
@@ -564,7 +576,7 @@ footer {
   .section, .how, .shortcuts-section, .cta-section { padding-left: 24px; padding-right: 24px; }
   .feature-grid { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; gap: 28px; }
-  .steps::before { display: none; }
+  .steps::before, .steps::after { display: none; }
   .step { padding: 0; }
   .shortcuts-grid { grid-template-columns: 1fr; }
   .privacy-inner { gap: 20px; justify-content: flex-start; }
