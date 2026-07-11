@@ -1,6 +1,28 @@
 (function () {
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Page loader — visible for a minimum duration so the animation registers,
+  // then fades out once the page has actually finished loading
+  var pageLoader = document.getElementById('pageLoader');
+  if (pageLoader) {
+    var minDisplay = reduceMotion ? 0 : 550;
+    var start = Date.now();
+    var hideLoader = function () {
+      var wait = Math.max(minDisplay - (Date.now() - start), 0);
+      setTimeout(function () {
+        pageLoader.classList.add('is-hidden');
+        setTimeout(function () {
+          if (pageLoader.parentNode) pageLoader.parentNode.removeChild(pageLoader);
+        }, 550);
+      }, wait);
+    };
+    if (document.readyState === 'complete') {
+      hideLoader();
+    } else {
+      window.addEventListener('load', hideLoader);
+    }
+  }
+
   // Track Mouse for Cursor Gradient
   if (!reduceMotion) {
     var cursorGlow = document.querySelector('.cursor-glow');
