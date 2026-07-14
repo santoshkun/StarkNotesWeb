@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>StarkNotes — Privacy Policy</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --bg-card: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --accent: #4ade80;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.65;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .back {
+    display: inline-block;
+    margin-bottom: 32px;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 28px;
+    margin: 0 0 8px;
+  }
+  .updated {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+  h2 {
+    font-size: 18px;
+    margin: 40px 0 12px;
+    color: var(--accent);
+  }
+  p, li { color: var(--text); font-size: 15.5px; }
+  ul { padding-left: 20px; }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .contact {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="index.html">&larr; Back to StarkNotes</a>
+    <h1>Privacy Policy</h1>
+    <div class="updated">Last updated: July 15, 2026</div>
+
+    <p>StarkNotes is a browser extension for capturing and organizing notes from webpages. This page explains exactly what data the extension handles and where it goes.</p>
+
+    <h2>What's stored, and where</h2>
+    <div class="card">
+      <p>All notes, tags, and settings you create in StarkNotes are stored <strong>locally on your device</strong> using Chrome's built-in storage APIs. Nothing you write in StarkNotes — no note content, no page text, no highlights — ever leaves your browser or is sent to any server operated by StarkNotes.</p>
+    </div>
+
+    <h2>The one external request StarkNotes makes</h2>
+    <div class="card">
+      <p>To show a small site icon next to each note, StarkNotes requests a favicon from Google's public favicon service, using only the <strong>domain name</strong> of the site the note was taken on (for example, <code>example.com</code> — never the full page URL, page title, or note content).</p>
+      <p>This is a display feature only. It does not transmit anything you've written, and it isn't used for tracking or analytics.</p>
+    </div>
+
+    <h2>What StarkNotes does <em>not</em> do</h2>
+    <ul>
+      <li>Does not send note content, page text, or browsing history to any server</li>
+      <li>Does not use analytics, trackers, or advertising SDKs</li>
+      <li>Does not sell or share data with third parties</li>
+      <li>Does not require an account or login</li>
+    </ul>
+
+    <h2>Permissions explained</h2>
+    <ul>
+      <li><strong>Storage</strong> — to save your notes locally on your device</li>
+      <li><strong>Active tab / scripting</strong> — to detect selected text on the current page so it can be captured as a note</li>
+      <li><strong>Tabs</strong> — to identify the current page's title and URL when creating a note, and to open StarkNotes-related pages (like the shortcuts settings page)</li>
+    </ul>
+
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes, the update date above will change accordingly. Continued use of StarkNotes after an update means you accept the revised policy.</p>
+
+    <div class="contact">
+      Questions about this policy or your data? Contact: <a href="mailto:truckkunnevermisses@gmail.com">truckkunnevermisses@gmail.com</a>
+    </div>
+  </div>
+</body>
+</html>
