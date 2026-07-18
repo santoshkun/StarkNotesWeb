@@ -68,7 +68,7 @@
 </head>
 <body>
   <div class="wrap">
-    <a class="back" href="index.html">&larr; Back to StarkNotes</a>
+    <a class="back" href="/">&larr; Back to StarkNotes</a>
     <h1>Privacy Policy</h1>
     <div class="updated">Last updated: July 15, 2026</div>
 
@@ -79,10 +79,11 @@
       <p>All notes, tags, and settings you create in StarkNotes are stored <strong>locally on your device</strong> using Chrome's built-in storage APIs. Nothing you write in StarkNotes — no note content, no page text, no highlights — ever leaves your browser or is sent to any server operated by StarkNotes.</p>
     </div>
 
-    <h2>The one external request StarkNotes makes</h2>
+    <h2>The two external requests StarkNotes makes</h2>
     <div class="card">
-      <p>To show a small site icon next to each note, StarkNotes requests a favicon from Google's public favicon service, using only the <strong>domain name</strong> of the site the note was taken on (for example, <code>example.com</code> — never the full page URL, page title, or note content).</p>
-      <p>This is a display feature only. It does not transmit anything you've written, and it isn't used for tracking or analytics.</p>
+      <p><strong>Site icons:</strong> to show a small site icon next to each note, StarkNotes requests a favicon from Google's public favicon service, using only the <strong>domain name</strong> of the site the note was taken on (for example, <code>example.com</code> — never the full page URL, page title, or note content).</p>
+      <p><strong>Interface font:</strong> StarkNotes' popup loads its display font (DM Sans / DM Mono) from Google Fonts' CDN. This request does not include any note content or browsing data — it's a standard font file request made by the popup page itself.</p>
+      <p>Neither of these is used for tracking or analytics, and neither transmits anything you've written in StarkNotes.</p>
     </div>
 
     <h2>What StarkNotes does <em>not</em> do</h2>
